@@ -11,7 +11,7 @@ window.onload=function(){
             y: Math.floor(Math.random()*1000),
             speedX: Math.floor(Math.random()*10)-5,
             speedY: Math.floor(Math.random()*10)-5,
-            radius: Math.floor(Math.random()*10)
+            radius: 3
         });
     }
 
@@ -19,15 +19,15 @@ window.onload=function(){
         let e = event || window.event;
         mouse.x = e.clientX;
         mouse.y = e.clientY;
-        mouse.mass = 10000;
-        mouse.radius = 100;
+        mouse.mass = 666;
+        mouse.radius = 8;
     }
 
     var cxt = an.getContext('2d');
 
     function draw(){
         for(var i=0;i<dotarry.length;i++){
-            cxt.fillStyle="#000000";
+            cxt.fillStyle="#aeaeae";
             cxt.beginPath();
             cxt.arc(dotarry[i].x+dotarry[i].speedX,dotarry[i].y+dotarry[i].speedY,dotarry[i].radius,0,Math.PI*2,true);
             cxt.closePath();
@@ -36,13 +36,15 @@ window.onload=function(){
             dotarry[i].x += dotarry[i].speedX;
             dotarry[i].y += dotarry[i].speedY;
 
-            // for (let j = i; j < dotarry.length; j++) {
-            //     if( Math.abs(dotarry[i].x - dotarry[j].x)<100 && Math.abs(dotarry[i].y - dotarry[j].y)<100 ){
-            //         cxt.moveTo(dotarry[i].x,dotarry[i].y);
-            //         cxt.lineTo(dotarry[j].x,dotarry[j].y);
-            //         cxt.stroke();
-            //     };
-            // }
+            for (let j = i; j < dotarry.length; j++) {
+                if( Math.abs(dotarry[i].x - dotarry[j].x)<100 && Math.abs(dotarry[i].y - dotarry[j].y)<100 ){
+                    
+                    cxt.moveTo(dotarry[i].x,dotarry[i].y);
+                    cxt.lineTo(dotarry[j].x,dotarry[j].y);
+                    cxt.stroke();
+                    cxt.strokeStyle="#ccc";
+                };
+            }
 
             if( dotarry[i].x > an.width || dotarry[i].x < 0 || dotarry[i].y > an.height || dotarry[i].y < 0){
                 dotarry[i] = {
@@ -50,16 +52,16 @@ window.onload=function(){
                     y: Math.floor(Math.random()*1000),
                     speedX: Math.floor(Math.random()*10)-5,
                     speedY: Math.floor(Math.random()*10)-5,
-                    radius: Math.floor(Math.random()*10)
+                    radius: 3
                 }
             }
             if(dotarry[i].speedX == 0 && dotarry[i].speedY == 0){
                 dotarry[i].speedX = Math.floor(Math.random()*10)-5;
                 dotarry[i].speedY = Math.floor(Math.random()*10)-5;
             }
-            if(dotarry[i].radius < 5){
-                dotarry[i].radius += Math.floor(Math.random()*10);
-            }
+            // if(dotarry[i].radius < 5){
+            //     dotarry[i].radius += Math.floor(Math.random()*10);
+            // }
 
         };
     };
