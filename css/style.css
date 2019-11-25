@@ -25,6 +25,7 @@ img {
 
 a {
     text-decoration: none;
+    color: rgb(85, 26, 139);
 }
 
 input,select,textarea{
@@ -33,7 +34,15 @@ input,select,textarea{
     border: 1px solid #cacaca;
     box-shadow: none;
 }
-
+.clear::after{
+    display: block;
+    width: 0;
+    height: 0;
+    border: none;
+    content: '';
+    overflow: hidden;
+    clear: both;
+}
 
 /* 正式开始 */
 .header{
@@ -50,17 +59,16 @@ input,select,textarea{
 }
 
 .main{
-    position: fixed;
-    top: 50%;
-    right: 0;
-    left: 0;
-    z-index: 1000;
     text-align: center;
 }
 .float-form{
-    display: inline-block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 1000;
+    margin-left: -151px;
     padding: 10px;
-    width: 300px;
+    width: 280px;
     border: 1px solid #eee;
     border-radius: 10px;
     text-align: left;
@@ -70,6 +78,9 @@ input,select,textarea{
     position: relative;
     margin: 10px 0;
     padding-bottom: 15px;
+}
+.float-form .item:last-child{
+    padding-bottom: 0;
 }
 .float-form .item input[type='text'],
 .float-form .item input[type='password'],
@@ -95,17 +106,38 @@ input,select,textarea{
 
 .float-form .item .btn{
     display: block;
+    border-radius: 5px;
     padding: 0 25px;
     height: 40px;
     line-height: 40px;
     font-size: 16px;
+    transition: background .5s;
 }
-.float-form.login-form .item .btn.login{
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
+.float-form .btn:hover{
+    background: #e6e6e6;
+}
+.float-form .btn.btn-bg1{
     color: #fff;
     background: rgb(4, 137, 214);
+    transition: background .5s;
+}
+.float-form .btn.btn-bg1:hover{
+    background: rgb(85, 26, 139);
+}
+
+.float-form .forget-pw{
+    float: right;
+}
+.float-form .forget-pw:hover{
+    text-decoration: underline;
+}
+
+.float-form.login-form{
+    margin-top: -135px;
+    transition: left 1s;
+}
+.float-form.login-form.close{
+
 }
 
 .bg{

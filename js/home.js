@@ -5,10 +5,10 @@ window.onload=function(){
     an.height = window.innerHeight;
 
     var dotarry = [],mouse = {};
-    for ( var i = 0; i < 50; i++) {
+    for ( var i = 0; i < 80; i++) {
         dotarry.push({
-            x: Math.floor(Math.random()*1000),
-            y: Math.floor(Math.random()*1000),
+            x: Math.floor(Math.random()*an.width),
+            y: Math.floor(Math.random()*an.height),
             speedX: Math.floor(Math.random()*10)-5,
             speedY: Math.floor(Math.random()*10)-5,
             radius: 3
