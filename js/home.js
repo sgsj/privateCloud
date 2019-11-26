@@ -1,4 +1,6 @@
 window.onload=function(){
+
+    //背景动画
     var an = document.getElementById("animation");
 
     an.width = window.innerWidth;
@@ -97,4 +99,14 @@ window.onload=function(){
         draw()
         gravitation(mouse)
     },30);
+
+    //表单
+    $('.float-form.login-form .item .btn.register').on('click',function () {
+        $('.float-form.login-form').addClass('close');
+        $('.float-form.register-form').removeClass('close');
+    })
+    $('.float-form.register-form .item .btn.login').on('click',function () {
+        $('.float-form.register-form').addClass('close');
+        $('.float-form.login-form').removeClass('close');
+    })
 }

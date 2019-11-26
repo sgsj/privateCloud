@@ -73,7 +73,36 @@ input,select,textarea{
     border-radius: 10px;
     text-align: left;
     background: rgba(255, 255, 255, .6);
+    transition: left 0.8s cubic-bezier(0.2,0.8,0.1,0.8);
 }
+.float-form .form-title{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+    height: 32px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #6a6a6a;
+}
+.float-form .form-title::before{
+    display: block;
+    flex-grow: 1;
+    content: '';
+    height: 1px;
+    background: #6a6a6a;
+}
+.float-form .form-title span{
+    padding: 0 10px;
+}
+.float-form .form-title::after{
+    display: block;
+    flex-grow: 1;
+    content: '';
+    height: 1px;
+    background: #6a6a6a;
+}
+
 .float-form .item{
     position: relative;
     margin: 10px 0;
@@ -134,10 +163,16 @@ input,select,textarea{
 
 .float-form.login-form{
     margin-top: -135px;
-    transition: left 1s;
 }
 .float-form.login-form.close{
+    left: -312px;
+}
 
+.float-form.register-form{
+    margin-top: -135px;
+}
+.float-form.register-form.close{
+    left: calc(100% + 161px);
 }
 
 .bg{
