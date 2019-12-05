@@ -7,36 +7,13 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/home.css">
     <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/echarts.js"></script>
 </head>
 <body>
     <div class="header">
         <span class="icon icon-cloud">My Cloud</span>
     </div>
     <div class="main">
-        <div class="float-layer">
-            <div class="float-form login-form">
-                <div class="form-title">
-                    <span>登录</span>
-                </div>
-                <div class="item">
-                    <sapn class="name"></sapn>
-                    <input type="text" placeholder="请输入用户名...">
-                    <span class="error">错误信息...</span>
-                </div>
-                <div class="item">
-                    <sapn class="name"></sapn>
-                    <input type="password" placeholder="请输入密码...">
-                    <span class="error"></span>
-                </div>
-                <div class="item btns">
-                    <a class="btn btn-bg1 login" href="javascript:void(0)">登录</a>
-                    <a class="btn register" href="javascript:void(0)">注册</a>
-                </div>
-                <div class="item clear">
-                    <a class="forget-pw" href="">忘记密码...</a>
-                </div>
-            </div>
-        </div>
         <div class="menu">
             <ul>
                 <li>
@@ -50,8 +27,36 @@
                 </li>
             </ul>
         </div>
-        
+        <div class="content">
+            <div id="overviewdata" class="overview" style="width: 500px; height: 500px;"></div>
+        </div>
     </div>
-    <script src="js/home.js"></script>
+    <script>
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('overviewdata'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'pie',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
 </body>
 </html>
